@@ -1,75 +1,76 @@
-# Abdul Raiyaan | Portfolio
+# Raiyaan | Portfolio
 
-Personal portfolio of Abdul Raiyaan, a Computer Science student at Taylor's University specialising in AI/ML with Data Science as an extension. The site is dark, gothic and interactive, built around one idea: **Building beyond possible.**
+Personal portfolio of Abdul Raiyaan, a Computer Science student at Taylor's University focused on AI, automation and web development.
 
-**Live site:** https://raiyaanportfolio.vercel.app/
+## What's inside
 
----
-
-## Highlights
-
-- **Reveal hero.** Move your cursor (or drag a finger on mobile) over the portrait to peel it back and reveal a glass anatomical version underneath.
-- **Draggable stickers.** Stickers fly in beside the headline shortly after load. Drag them anywhere on the page and they stay where you throw them.
-- **Rotating skill globes.** Languages, frameworks, AI and cloud, and focus areas are shown as moving globes. Skill chips open short notes on each skill.
-- **Liquid glass surfaces.** Translucent, blurred, glossy panels across the interface.
-- **Scroll-driven motion.** Animated backgrounds and reveal effects as you move down the page.
-- **Hidden contact game.** A small drag-the-line game in the Contact section unlocks a QR code.
-- **Responsive.** Layouts are tuned so text never overlaps images on mobile.
-
-## Sections
-
-1. Hero
-2. Featured (languages, hackathons, CTF result)
-3. Projects
-4. Where I have worked
-5. Skills
-6. Other activities
-7. About
-8. Contact
-
-## Featured work
-
-- **FindBack:** lost and found platform
-- **VaXease:** HR healthcare ecosystem for vaccination compliance
-- **NaviSense:** AI indoor navigation app for visually impaired users
-- **SkyZen:** AI-powered flight booking platform prototype ( just a joke )
-- **UniResource Hub:** JavaFX campus resource booking app
-
-More on my [GitHub profile](https://github.com/ABDULRAIYAAN).
+- **Hero** with draggable objects, including a Taylor's University ID card
+- **About** with an ASCII-art portrait that reveals on scroll
+- **Case files**, a project carousel (Orbit, VaXease, NaviSense, SkyZen, FindBack, UniResource Hub) that opens a brief for each project
+- **Degree in progress** with current coursework
+- **Stack**, an interactive wireframe sphere of tools and technologies
+- **Experience and results**: internship, hackathons and CTFs
+- **Sketchbook** with a letter to my future self
+- **Off-screen**, **Latest on LinkedIn** and **Contact**
 
 ## Tech stack
 
-- HTML, CSS and JavaScript
-- No heavy frameworks, to keep load times low
-- Hosted as a static site
+- Vite 5 and React 18
+- [ThreeUI](https://github.com/designcodeio) components (`@designcodeio/threeui`), with local patches under `src/tui`
+- Three.js 0.128
+- Plain HTML, CSS and JavaScript for the page layout and scroll motion
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+The `.npmrc` sets `legacy-peer-deps=true`, so a plain `npm install` works.
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+The production build is written to `dist/`.
+
+## Deploy (Vercel)
+
+1. Push this repo to GitHub.
+2. Import it in Vercel.
+3. Use these settings (they are also in `vercel.json`):
+   - Framework: Vite
+   - Build command: `npm run build`
+   - Output directory: `dist`
+4. Add a custom domain in the Vercel project settings.
+
+`vercel.json` also sets basic security headers.
 
 ## Project structure
 
 ```
-.
-├── index.html
-├── assets/        images, icons, fonts
-├── deploy/        production build with security headers
-└── README.md
+index.html        page markup, styles and scroll/motion script
+src/main.jsx      mounts the React components (dock, water, carousel, wireframe, sketchbook)
+src/tui/          ThreeUI component sources (patched)
+src/sb/           sketchbook pages and fonts
+public/           favicon
+vercel.json       deploy config and security headers
 ```
 
-> Adjust this tree to match your actual folders before committing
+## Accessibility
 
-
-## Security
-
-- Strict Content Security Policy
-- Security headers set at the host level
-- No API keys or secrets in the repository
-
-To report a problem, email the address below.
+Scroll animations and the background effect are turned off for visitors who have `prefers-reduced-motion` enabled.
 
 ## Contact
 
+- Email: raiyaantops@gmail.com
 - LinkedIn: [linkedin.com/in/abdulraiyaan](https://linkedin.com/in/abdulraiyaan)
 - GitHub: [github.com/ABDULRAIYAAN](https://github.com/ABDULRAIYAAN)
-- Email: raiyaantops@gmail.com
 
 ## License
 
-All rights reserved. Please do not copy the design or content without permission.
+All rights reserved. Content, design and project write-ups belong to Abdul Raiyaan. Third-party components remain under their own licences (ThreeUI is MIT).
