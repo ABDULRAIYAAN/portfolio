@@ -1,6 +1,7 @@
 # Raiyaan | Portfolio
 
 Personal portfolio of Abdul Raiyaan, a Computer Science student at Taylor's University focused on AI, automation and web development.
+visit: https://raiyaan-eight.vercel.app/ 
 
 ## What's inside
 
