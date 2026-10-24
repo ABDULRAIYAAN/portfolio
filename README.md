@@ -16,8 +16,7 @@ Personal portfolio of Abdul Raiyaan, a Computer Science student at Taylor's Univ
 ## Tech stack
 
 - Vite 5 and React 18
-- [ThreeUI](https://github.com/designcodeio) components (`@designcodeio/threeui`), with local patches under `src/tui`
-- Three.js 0.128
+ components (`@designcodeio/threeui`), with local patches under `src/tui`
 - Plain HTML, CSS and JavaScript for the page layout and scroll motion
 
 ## Getting started
