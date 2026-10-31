@@ -51,7 +51,7 @@ const n = `<!doctype html>
         ),
         #000;
       perspective: 1100px;
-      touch-action: none;
+      touch-action: pan-y;
       cursor: crosshair;
     }
 
