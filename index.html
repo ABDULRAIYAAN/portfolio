@@ -312,6 +312,10 @@ body{background:#000}
 #wordmark{padding:0 0 clamp(30px,6vw,70px)}
 .wm{position:relative;aspect-ratio:16/8;max-height:68vh;width:100%;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#000}
 .wm .threeui-background,.wm iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ccpin{position:relative;height:380vh}
+.ccstick{position:sticky;top:calc(50vh - 300px);padding-top:0}
+@media (max-width:860px){.ccpin{height:340vh}.ccstick{top:calc(50vh - 240px)}}
+@media (prefers-reduced-motion:reduce){.ccpin{height:auto}.ccstick{position:static}}
 .cc{position:relative;height:clamp(460px,64vh,620px);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#000}
 .cc .threeui-background,.cc iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .ccnote{margin:14px 0 0}
@@ -591,9 +595,11 @@ body{background:#000}
 
 <section id="projects" class="rule">
   <div class="wrap">
-    <div class="head rv pre"><h2 class="sw">Case files.</h2><p>Six projects, from two startup ideas to a booking app. Click a card for the brief. Double-click the stage to turn the wave.</p></div>
-    <div class="cc rv pre" id="cc" role="group" aria-label="Project carousel"></div>
-    <p class="objcap ccnote">Each card shows the drawn plate from that project. Arrow keys also work.</p>
+    <div class="head rv pre"><h2 class="sw">Case files.</h2><p>Six projects, from two startup ideas to a booking app. Scroll to move through them and click a card for the brief.</p></div>
+    <div class="ccpin" id="ccpin"><div class="ccstick">
+      <div class="cc rv pre" id="cc" role="group" aria-label="Project carousel"></div>
+      <p class="objcap ccnote">Scroll to move through the six projects. Click a card for the brief.</p>
+    </div></div>
   </div>
 </section>
 
@@ -896,7 +902,10 @@ Object.keys(GROUPS).forEach(function(g){
 
   /* 3. marquee: drifts on its own, speeds up and leans with the scroll */
   var pos=[0,0],skew=0;
+  var mqVis=true,mqEl=rows[0]&&rows[0].parentElement;
+  if(mqEl&&'IntersectionObserver' in window)new IntersectionObserver(function(e){mqVis=e[0].isIntersecting;}).observe(mqEl);
   function mq(){
+    if(!mqVis||document.hidden){window.__vel*=.9;requestAnimationFrame(mq);return;}
     var v=window.__vel||0;skew+=((clamp(v,-40,40)*.18)-skew)*.12;
     rows.forEach(function(row,i){var dir=+row.dataset.dir,half=row.scrollWidth/2||1;
       pos[i]+=dir*(reduce?0:(.45+Math.min(Math.abs(v),60)*.22*(v>=0?1:-1)*dir*dir));
@@ -1018,7 +1027,7 @@ Object.keys(GROUPS).forEach(function(g){
   }
   var frames=$('.cc,.skf'),rules=$('.rule'),posts=$('.posts .post'),offs=$('.off > div'),
       fw=document.getElementById('fw'),fws=fw?[].slice.call(fw.children):[],
-      objs=document.getElementById('objs'),hero=document.querySelector('.hero .wrap'),proj=document.getElementById('projects');
+      objs=document.getElementById('objs'),hero=document.querySelector('.hero .wrap'),proj=document.getElementById('projects'),pin=document.getElementById('ccpin');
   var lastPhase=-9,tick=false;
   function upd(){
     tick=false;var vh=innerHeight,y=scrollY;
@@ -1035,7 +1044,7 @@ Object.keys(GROUPS).forEach(function(g){
     offs.forEach(function(el,i){var r=el.getBoundingClientRect();if(r.bottom<-100||r.top>vh+100)return;var o=(r.top+r.height/2-vh/2);el.style.translate='0 '+clamp(-o*(.025+(i%3)*.03),-34,34).toFixed(1)+'px';});
     if(fw){var r=fw.getBoundingClientRect(),p=clamp((vh*1.0-r.top)/(vh*.45),0,1);fws.forEach(function(s,i){var q=clamp(p*1.7-i*.13,0,1);s.style.transform='translate3d(0,'+((1-q)*95).toFixed(1)+'%,0)';s.style.opacity=(.15+.85*q).toFixed(3);});}
     if(hero){var hp=clamp(y/(vh*.8),0,1);hero.style.opacity=(1-.55*hp).toFixed(3);if(objs)objs.style.translate='0 '+(-hp*70).toFixed(1)+'px';}
-    if(proj){var f=document.querySelector('#cc iframe');if(f&&f.contentWindow){var r2=proj.getBoundingClientRect(),pp=clamp((vh*.55-r2.top)/Math.max(1,r2.height-vh*.1),0,1),ph=+(pp*5).toFixed(2);if(Math.abs(ph-lastPhase)>.04){lastPhase=ph;try{f.contentWindow.postMessage({type:'phase',v:ph},'*');}catch(e){}}}}
+    if(pin){var f=document.querySelector('#cc iframe');if(f&&f.contentWindow){var r2=pin.getBoundingClientRect(),pp=clamp(-r2.top/Math.max(1,r2.height-vh*.9),0,1),ph=+(pp*5).toFixed(2);if(Math.abs(ph-lastPhase)>.02){lastPhase=ph;try{f.contentWindow.postMessage({type:'phase',v:ph},'*');}catch(e){}}}}
   }
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
   addEventListener('resize',upd);upd();setTimeout(upd,600);setTimeout(upd,2000);

@@ -576,9 +576,9 @@ function program(gl, vertSrc, fragSrc) {
   return p;
 }
 
-const DPR = Math.min(window.devicePixelRatio || 1, 1.75);
+const DPR = Math.min(window.devicePixelRatio || 1, 1) * 0.8;
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const SIM_RES = 512;
+const SIM_RES = 256;
 
 class Panel {
   constructor(el, fragSrc, logo, opts) {
@@ -850,10 +850,14 @@ const panels = [
 ].filter(p => p.ok);
 
 const t0 = performance.now();
-function loop() {
+let lastDraw = 0;
+function loop(now) {
+  requestAnimationFrame(loop);
+  if (document.hidden) return;
+  if (now - lastDraw < 33) return; /* about 30 fps: the water is slow and soft */
+  lastDraw = now;
   const t = (performance.now() - t0) / 1000;
   for (const p of panels) p.draw(t);
-  requestAnimationFrame(loop);
 }
 if (!REDUCED) requestAnimationFrame(loop);
 else for (const p of panels) p.draw(0.001);
