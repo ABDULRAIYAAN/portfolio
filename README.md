@@ -17,7 +17,7 @@ visit: https://raiyaan-eight.vercel.app/
 ## Tech stack
 
 - Vite 5 and React 18
- components (`@designcodeio/threeui`), with local patches under `src/tui`
+- ThreeUI components (`@designcodeio/threeui`), with local patches under `src/tui`
 - Plain HTML, CSS and JavaScript for the page layout and scroll motion
 
 ## Getting started
@@ -67,7 +67,7 @@ Scroll animations and the background effect are turned off for visitors who have
 
 ## Contact
 
-- Email: raiyaantops@gmail.com
+- Email: raiyaantopas@gmail.com
 - LinkedIn: [linkedin.com/in/abdulraiyaan](https://linkedin.com/in/abdulraiyaan)
 - GitHub: [github.com/ABDULRAIYAAN](https://github.com/ABDULRAIYAAN)
 
