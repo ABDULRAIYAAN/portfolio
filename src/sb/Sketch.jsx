@@ -15,10 +15,10 @@ import fNews from "./newsreader.woff2";
 
 const PAGES = [
   { url: s0, title: "Hello", place: "Raiyaan" },
-  { url: s1, title: "Orbit", place: "Co-founded startup" },
-  { url: s2, title: "VaXease", place: "Hult Prize project" },
-  { url: s3, title: "NaviSense", place: "Indoor navigation" },
-  { url: s4, title: "SkyZen", place: "Flight booking prototype" },
+  { url: s1, title: "VaultDB", place: "Database from scratch" },
+  { url: s2, title: "Orbit", place: "Co-founded startup" },
+  { url: s3, title: "VaXease", place: "Hult Prize project" },
+  { url: s4, title: "NaviSense", place: "Indoor navigation" },
   { url: s5, title: "FindBack", place: "Lost and found" },
   { url: s6, title: "UniResource Hub", place: "Campus booking app" },
   { url: s7, title: "What I am studying", place: "This semester" },
