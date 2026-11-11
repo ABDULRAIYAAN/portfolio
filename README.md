@@ -7,7 +7,7 @@ visit: https://raiyaan-eight.vercel.app/
 
 - **Hero** with draggable objects, including a Taylor's University ID card
 - **About** with an ASCII-art portrait that reveals on scroll
-- **Case files**, a project carousel (Orbit, VaXease, NaviSense, SkyZen, FindBack, UniResource Hub) that opens a brief for each project
+- **Case files**, a project carousel (VaultDB, GPT from Scratch, Orbit, VaXease, NaviSense, FindBack, UniResource Hub) that opens a brief for each project
 - **Degree in progress** with current coursework
 - **Stack**, an interactive wireframe sphere of tools and technologies
 - **Experience and results**: internship, hackathons and CTFs
@@ -57,7 +57,7 @@ index.html        page markup, styles and scroll/motion script
 src/main.jsx      mounts the React components (dock, water, carousel, wireframe, sketchbook)
 src/tui/          ThreeUI component sources (patched)
 src/sb/           sketchbook pages and fonts
-public/           favicon
+public/           favicon, and the GPT from Scratch demo at public/gpt/ (served at /gpt/)
 vercel.json       deploy config and security headers
 ```
 
